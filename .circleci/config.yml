@@ -7,7 +7,7 @@ experimental:
 jobs:
   build:
     docker:
-      - image: circleci/node:7.10
+      - image: circleci/node:6.11
     working_directory: ~/keenethics
     steps:
       - checkout
@@ -20,10 +20,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: Fix host authenticity for 107.170.121.178
-          command: ssh-keyscan 107.170.121.178 >> ~/.ssh/known_hosts
+      # - run:
+      #     name: Fix host authenticity for 107.170.121.178
+      #     command: ssh-keyscan 107.170.121.178 >> ~/.ssh/known_hosts
       - run: yarn deploy
-      - add_ssh_keys:
-          fingerprints:
-            - "98:07:43:e3:59:01:09:83:3d:69:1c:eb:ca:17:33:78"
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "98:07:43:e3:59:01:09:83:3d:69:1c:eb:ca:17:33:78"
+      - echo 107.170.121.178 ssh-rsa "98:07:43:e3:59:01:09:83:3d:69:1c:eb:ca:17:33:78" >> ~/.ssh/known_hosts
