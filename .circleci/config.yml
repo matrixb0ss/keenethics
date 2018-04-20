@@ -20,9 +20,9 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-      # - run:
-      #     name: Fix host authenticity for 107.170.121.178
-      #     command: ssh-keyscan 107.170.121.178 >> ~/.ssh/known_hosts
+      - run:
+          name: Fix host authenticity for 107.170.121.178
+          command: ssh-keyscan 107.170.121.178 >> ~/.ssh/known_hosts
       - run: yarn deploy
       - add_ssh_keys:
           fingerprints:
