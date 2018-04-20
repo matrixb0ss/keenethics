@@ -11,6 +11,7 @@ jobs:
     working_directory: ~/keenethics
     steps:
       - checkout
+      - run: ssh-keyscan $SSH_SERVER >> ~/.ssh/known_hosts
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
