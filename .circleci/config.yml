@@ -24,4 +24,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "b5:cb:91:30:e3:4c:b0:ab:56:9c:29:a0:34:9a:ab:2d"
+      - run:
+          name: Install rsync
+          command: sudo apt install rsync
       - run: yarn deploy
