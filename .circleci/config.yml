@@ -1,14 +1,12 @@
 version: 2
-experimental:
-  notify:
-    branches:
-      only:
-        - master
 jobs:
   build:
     docker:
       - image: circleci/node:6.11
     working_directory: ~/keenethics
+    branches:
+      only:
+        - master
     steps:
       - checkout
       - restore_cache:
